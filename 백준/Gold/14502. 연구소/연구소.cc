@@ -52,6 +52,8 @@ void bfs(vector<vector<int>> board)
 }
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
 	cin >> n >> m;
 	vector<vector<int>> board(n, vector<int>(m));
 	for (int i = 0; i < n; i++)
