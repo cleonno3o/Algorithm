@@ -75,14 +75,14 @@ int main()
 				board[a][b] = 1;
 				for (int c = a; c < n; c++)
 				{
-					for (int d = 0; d < m; d++)
+					for (int d = (a == c ? b + 1 : 0); d < m; d++)
 					{
 						if (board[c][d] == 0)
 						{
 							board[c][d] = 1;
 							for (int e = c; e < n; e++)
 							{
-								for (int f = 0; f < m; f++)
+								for (int f = (e == c ? d + 1 : 0); f < m; f++)
 								{
 									if (board[e][f] == 0)
 									{
