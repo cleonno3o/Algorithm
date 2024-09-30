@@ -37,7 +37,7 @@ int main()
 				nCol <= m && nCol >= 1 &&
 				miro[nRow][nCol] == 1)
 			{
-				if (ch[nRow][nCol] == 0 || ch[nRow][nCol] > ch[pos.first][pos.second] + 1)
+				if (ch[nRow][nCol] == 0)
 				{
 					ch[nRow][nCol] = ch[pos.first][pos.second] + 1;
 					q.push({ nRow, nCol });
