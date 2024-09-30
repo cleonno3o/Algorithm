@@ -7,6 +7,8 @@ int drow[] = { 1, 0, -1, 0 };
 int dcol[] = { 0, -1, 0, 1 };
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
 	int m, n;
 	cin >> m >> n;
 	vector<vector<int>> box(n, vector<int>(m));
