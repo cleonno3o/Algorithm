@@ -11,6 +11,7 @@ void bfs(vector<vector<char>>& image, vector<vector<int>>& ch)
 		for (int j = 0; j < n; j++)
 			ch[i][j] = 0;
 	int cnt = 0;
+	queue<pair<int, int>> q;
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -18,7 +19,6 @@ void bfs(vector<vector<char>>& image, vector<vector<int>>& ch)
 			if (ch[i][j] == 0)
 			{
 				cnt++;
-				queue<pair<int, int>> q;
 				ch[i][j] = 1;
 				q.push({ i, j });
 				while (!q.empty())
