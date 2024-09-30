@@ -73,14 +73,14 @@ int main()
 			if (board[a][b] == 0)
 			{
 				board[a][b] = 1;
-				for (int c = 0; c < n; c++)
+				for (int c = a; c < n; c++)
 				{
 					for (int d = 0; d < m; d++)
 					{
 						if (board[c][d] == 0)
 						{
 							board[c][d] = 1;
-							for (int e = 0; e < n; e++)
+							for (int e = c; e < n; e++)
 							{
 								for (int f = 0; f < m; f++)
 								{
