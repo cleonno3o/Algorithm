@@ -1,14 +1,9 @@
 #include <iostream>
 #include <string>
 #include <deque>
-#include <vector>
 using namespace std;
 struct Gear {
-	int head = 1;
-	int right = 3;
-	int left = 7;
-	int info[9] = { 0 };
-	deque<int> d;
+	deque<int> info;
 	int dir = 0;
 };
 constexpr int N = 0;
@@ -19,22 +14,16 @@ void rotate(Gear& gear, int dir)
 	// 반시계방향
 	if (dir == -1)
 	{
-		int temp = gear.d.front();
-		gear.d.pop_front();
-		gear.d.push_back(temp);
-		//vector<int> v;
-		//gear.head++;
-		//gear.
-		//if (gear.head > 8) gear.head = 1;
+		int temp = gear.info.front();
+		gear.info.pop_front();
+		gear.info.push_back(temp);
 	}
 	// 시계
 	else if (dir == 1)
 	{
-		int temp = gear.d.back();
-		gear.d.pop_back();
-		gear.d.push_front(temp);
-		//gear.head--;
-		//if (gear.head < 1) gear.head = 8;
+		int temp = gear.info.back();
+		gear.info.pop_back();
+		gear.info.push_front(temp);
 	}
 }
 int main()
@@ -44,9 +33,7 @@ int main()
 		string temp;
 		cin >> temp;
 		for (int j = 0; j < 8; j++)
-		{
-			gears[i].d.push_back(temp[j] - '0');
-		}
+			gears[i].info.push_back(temp[j] - '0');
 	}
 	int k;
 	cin >> k;
@@ -57,14 +44,14 @@ int main()
 		gears[num].dir = dir;
 		for (int j = num - 1; j > 0; j--)
 		{
-			if (gears[j].d[2] != gears[j + 1].d[6])
+			if (gears[j].info[2] != gears[j + 1].info[6])
 				gears[j].dir = -gears[j + 1].dir;
 			else
 				gears[j].dir = 0;
 		}
 		for (int j = num + 1; j <= 4; j++)
 		{
-			if (gears[j].d[6] != gears[j - 1].d[2])
+			if (gears[j].info[6] != gears[j - 1].info[2])
 				gears[j].dir = -gears[j - 1].dir;
 			else
 				gears[j].dir = 0;
@@ -77,7 +64,7 @@ int main()
 	int res = 0;
 	for (int i = 1; i <= 4; i++)
 	{
-		int headValue = gears[i].d[0];
+		int headValue = gears[i].info[0];
 		if (headValue == S)
 		{
 			switch (i)
