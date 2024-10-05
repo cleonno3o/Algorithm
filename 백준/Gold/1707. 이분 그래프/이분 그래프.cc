@@ -30,13 +30,12 @@ int main()
 			{
 				ch[k] = 1;
 				q.push(k);
-				while (!q.empty() && flag)
+				while (!q.empty())
 				{
 					int s = q.front();
 					q.pop();
 					for (int j = 0; j < gr[s].size(); j++)
 					{
-						if (!flag) break;
 						if (ch[gr[s][j]] == 0)
 						{
 							q.push(gr[s][j]);
