@@ -18,7 +18,6 @@ int main()
 	cin >> n >> m;
 	vector<vector<int>> board(n + 1, vector<int>(m + 1));
 	vector<vector<vector<int>>> ch(n + 1, vector<vector<int>>(m + 1, vector<int>(2)));
-	vector<vector<int>> dist(n + 1, vector<int>(m + 1));
 	for (int i = 1; i <= n; i++)
 	{
 		string temp;
