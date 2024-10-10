@@ -9,14 +9,11 @@ int dcol[] = { 1, -1, 0, 0, 1, -1, 1, -1 };
 pair<int, int> king;
 pair<int, int> stone;
 int order[51];
-int board[9][9];
 int N;
 void getInput()
 {
 	string kIn, sIn;
 	cin >> kIn >> sIn >> N;
-	board['9' - kIn[1]][kIn[0] - 'A' + 1] = KING;
-	board['9' - sIn[1]][sIn[0] - 'A' + 1] = STONE;
 	king = make_pair('9' - kIn[1], kIn[0] - 'A' + 1);
 	stone = make_pair('9' - sIn[1], sIn[0] - 'A' + 1);
 	for (int i = 1; i <= N; i++)
@@ -44,14 +41,12 @@ int main()
 		if (nRow > 8 || nRow < 1 ||
 			nCol > 8 || nCol < 1) continue;
 		// 안인데 빈칸
-		if (board[nRow][nCol] == 0)
+		if (make_pair(nRow, nCol) != stone)
 		{
-			board[king.first][king.second] = 0;
-			board[nRow][nCol] = KING;
 			king = make_pair(nRow, nCol);
 		}
 		// 안인데 돌
-		else if (board[nRow][nCol] == STONE)
+		else
 		{
 			int nnRow = nRow + drow[order[i]];
 			int nnCol = nCol + dcol[order[i]];
@@ -59,12 +54,7 @@ int main()
 				nnCol > 8 || nnCol < 1) continue;
 			else
 			{
-				board[stone.first][stone.second] = 0;
-				board[nnRow][nnCol] = STONE;
 				stone = make_pair(nnRow, nnCol);
-
-				board[king.first][king.second] = 0;
-				board[nRow][nCol] = KING;
 				king = make_pair(nRow, nCol);
 			}
 		}
