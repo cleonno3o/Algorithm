@@ -6,6 +6,8 @@ int d_row[] = { 0, 1, 0, -1 };
 int d_col[] = { 1, 0, -1, 0 };
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 	cin >> R >> C >> N;
 	for (int i = 0; i < R; i++)
 	{
