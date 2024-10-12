@@ -1,5 +1,5 @@
 #include <iostream>
-#include <queue>
+#include <deque>
 #include <vector>
 using namespace std;
 
@@ -10,6 +10,8 @@ int dcol[] = { 0, 0, -1, 1 };
 pair<int, int> start;
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
 	int n, m;
 	cin >> n >> m;
 	board = vector<vector<int> >(n, vector<int>(m));
@@ -23,13 +25,13 @@ int main()
 				start = make_pair(i, j);
 		}
 	}
-	queue<pair<int, int> > q;
-	q.push(make_pair(start.first , start.second));
+	deque<pair<int, int> > q;
+	q.push_back(make_pair(start.first , start.second));
 	ch[start.first][start.second] = 0;
 	while (!q.empty())
 	{
 		pair<int, int> pos = q.front();
-		q.pop();
+		q.pop_front();
 		for (int i = 0; i < 4; i++)
 		{
 			int nRow = pos.first + drow[i];
@@ -39,7 +41,7 @@ int main()
 			if (ch[nRow][nCol] != -1) continue;
 			if (board[nRow][nCol] == 0) continue;
 			ch[nRow][nCol] = ch[pos.first][pos.second] + 1;
-			q.push(make_pair(nRow, nCol));
+			q.push_back(make_pair(nRow, nCol));
 		}
 	}
 	for (int i = 0; i < n; i++)
