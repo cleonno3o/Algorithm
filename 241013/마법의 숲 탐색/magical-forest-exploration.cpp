@@ -28,7 +28,6 @@ void dfs(int row, int col, int golemIdx,
 				{
 					ch[nRow][nCol] = 1;
 					dfs(nRow, nCol, golemIdx, forest, ch);
-					ch[nRow][nCol] = 0;
 				}
 			}
 			else if (forest[row][col] < 0)
@@ -37,7 +36,6 @@ void dfs(int row, int col, int golemIdx,
 				{
 					ch[nRow][nCol] = 1;
 					dfs(nRow, nCol, forest[nRow][nCol], forest, ch);
-					ch[nRow][nCol] = 0;
 				}
 			}
 		}
