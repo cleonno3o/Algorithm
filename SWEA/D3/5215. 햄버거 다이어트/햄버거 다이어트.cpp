@@ -5,44 +5,24 @@
 using namespace std;
 int T;
 int n, limit;
-vector<int> ch;
 vector<int> score;
 vector<int> cal;
-int maxScore;
-void dfs(int s, int currScore, int currCal)
-{
-	if (currScore > maxScore) maxScore = currScore;
-	for (int i = s + 1; i < n; i++)
-	{
-		if (ch[i] == 0)
-		{
-			if (currCal + cal[i] <= limit)
-			{
-				ch[i] = 1;
-				dfs(i, currScore + score[i], currCal + cal[i]);
-				ch[i] = 0;
-			}
-		}
-	}
-}
+
 void runTest()
 {
-	maxScore = 0;
 	cin >> n >> limit;
-	ch = score = cal = vector<int>(n);
+	vector<int> table(limit + 1);
+	score = cal = vector<int>(n);
 	for (int i = 0; i < n; i++)
-	{
 		cin >> score[i] >> cal[i];
-	}
 	for (int i = 0; i < n; i++)
 	{
-		if (cal[i] <= limit)
+		for (int j = limit; j >= cal[i]; j--)
 		{
-			ch[i] = 1;
-			dfs(i, score[i], cal[i]);
+			table[j] = max(table[j], table[j - cal[i]] + score[i]);
 		}
 	}
-	cout << maxScore << "\n";
+	cout << table[limit] << "\n";
 }
 
 int main(int argc, char** argv)
