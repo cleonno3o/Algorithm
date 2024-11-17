@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-void dfs(int s,int lv, int n, vector<vector<int>>& computers)
+void dfs(int s, int n, vector<vector<int>>& computers)
 {
     for (int i = 0; i < n; i++)
     {
@@ -10,7 +10,7 @@ void dfs(int s,int lv, int n, vector<vector<int>>& computers)
         {
             computers[s][i] = 0;
             computers[i][i] = 0;
-            dfs(i, lv, n, computers);
+            dfs(i, n, computers);
         }
     }
 }
@@ -22,7 +22,7 @@ int solution(int n, vector<vector<int>> computers) {
         {
             answer++;
             computers[i][i] = 0;
-            dfs(i, 0, n, computers);
+            dfs(i, n, computers);
         }
     }
     return answer;
