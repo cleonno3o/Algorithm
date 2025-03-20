@@ -33,7 +33,7 @@ void getInput()
 			if (nRow < l && nRow >= 0 &&
 				nCol < l && nCol >= 0)
 			{
-				if (board[nRow][nCol] == -1 || board[nRow][nCol] > board[row][col] + 1)
+				if (board[nRow][nCol] == -1)
 				{
 					board[nRow][nCol] = board[row][col] + 1;
 					q.push(make_pair(nRow, nCol));
