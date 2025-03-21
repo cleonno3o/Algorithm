@@ -69,6 +69,8 @@ void printResult()
 int main()
 {
     cnt = 1;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
     while (1)
     {
         cin >> N;
